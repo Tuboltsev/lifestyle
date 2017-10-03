@@ -1,0 +1,159 @@
+@import '_variables.scss';
+
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder { @content; }
+	&:-moz-placeholder           { @content; }
+	&::-moz-placeholder          { @content; }
+	&:-ms-input-placeholder      { @content; }
+}
+
+body {
+  color: #000;
+  font: 14px $font-primary;
+}
+
+.container {
+  min-width: 768px;
+}
+
+// Прижатие футера к низу
+html, body {
+  height: 100%;
+}
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+#content {
+  flex: 1 0 auto;
+}
+.section-footer {
+  flex: 0 0 auto;
+}
+
+@import '_components.scss';
+@import '_header.scss';
+
+.ic-graph {
+  @extend %graph;
+}
+
+#content {
+  background: url(../img/gradient.jpg) no-repeat left top;
+}
+
+.menu-section {
+  @media all and (min-width: 991px) {
+    background: url(../img/menu-bg.png) no-repeat top center;
+    background-size: contain;
+  }
+}
+
+.menu-title {
+  margin-bottom: 30px;
+}
+
+.menu-cart-wrap {
+  margin-bottom: 95px;
+}
+
+.section-reviews {
+  background: url(../img/aqua.png) no-repeat center 50px;
+  background-size: auto calc(100% - 50px);
+  margin-bottom: 30px;
+}
+
+
+.reviews {
+  position: relative;
+}
+
+.reviews__container {
+  position: relative;
+  width: calc(100% - 100px);
+  padding: 0 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.reviews__wrapper {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 60px;
+}
+
+.reviews__slide {
+  height: auto;
+}
+
+.reviews__review {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  @media all and (min-width: 992px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.reviews__pagination {
+  text-align: center;
+  transition: 300ms;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+
+
+  .swiper-pagination-bullet {
+    $size: 14px;
+    width: $size; height: $size;
+    background: #fff;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background: $color-accent;
+  }
+}
+
+
+.reviews__button-next,
+.reviews__button-prev {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &.swiper-button-disabled {
+    opacity: .35;
+    cursor: auto;
+    pointer-events: none;
+  }
+}
+.reviews__button-next {
+  left: auto; right: 0;
+  @extend %arr-lg-right;
+}
+.reviews__button-prev {
+  right: auto; left: 0;
+  @extend %arr-lg-left;
+}
+
+.section-footer {
+  background: #fff url(../img/bg-footer.jpg) no-repeat left bottom;
+  background-size: cover;
+}
+
+@import '_footer.scss';

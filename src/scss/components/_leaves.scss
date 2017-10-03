@@ -1,0 +1,38 @@
+.leaves-wrap {
+	position: relative;
+}
+
+.leaves__left-top,
+.leaves__bottom,
+.leaves__right-top,
+.leaves__right-bottom {
+	position: absolute;
+	display: none;
+	@media all and (min-width: 992px) {
+		display: block;
+	}
+}
+
+
+.leaves__left-top {
+	left: -50px; top: 120px;
+	z-index: 9999;
+}
+
+.leaves__bottom {
+	right: 435px;
+	bottom: -85px;
+}
+
+.leaves__right-top {
+	right: -45px; top: 75px;
+	opacity: .75;
+	@media all and (min-width: 1200px) {
+		top: 160px;
+	}
+}
+
+.leaves__right-bottom {
+	bottom: 90px; right: -45px;
+	z-index: 9999;
+}

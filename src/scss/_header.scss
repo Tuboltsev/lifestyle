@@ -1,0 +1,46 @@
+.header__top {
+	display: flex;
+	padding: 22px 0;
+	border-bottom: 3px solid #00BF00;
+	margin-bottom: 30px;
+}
+
+.header__address {
+	// float: left;
+	flex-shrink: 0;
+	padding-right: 30px;
+}
+
+.header__logo {
+	display: block;
+	width: 370px;
+	margin: 0 auto;
+}
+
+.header__right-col {
+	// float: right;
+	flex-shrink: 0;
+	padding-left: 30px;
+}
+
+.header__social {
+	margin: 20px 0 40px;
+}
+
+.header__ctrl {
+	@extend %clearfix;
+	text-align: right;
+}
+
+.header__search {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.header__basket {
+	display: inline-block;
+}
+
+.header__bottom {
+	margin-bottom: 40px;
+}

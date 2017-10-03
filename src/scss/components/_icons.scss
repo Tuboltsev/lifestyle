@@ -1,0 +1,53 @@
+%arr-lg-left,
+%arr-lg-right,
+%weight,
+%graph,
+%cookbook,
+%arr-sm-left,
+%arr-sm-right,
+%quote {
+	display: inline-block;
+	background: url(../img/sprite.png) no-repeat;
+}
+
+%arr-lg-left,
+%arr-lg-right {
+	width: 35px; height: 63px;
+}
+
+%arr-lg-left {  background-position: 0 0; 	  }
+
+%arr-lg-right { background-position: -35px 0; }
+
+%weight {
+	width: 37px; height: 45px;
+	background-position: -70px 0;
+}
+
+%graph {
+	width: 18px; height: 16px;
+	background-position: -70px -45px;
+}
+
+%cookbook {
+	width: 32px; height: 28px;
+	background-position: -107px 0;
+}
+
+%arr-sm-left,
+%arr-sm-right {
+	width: 7px; height: 11px;
+}
+
+%arr-sm-left {
+	background-position: -88px -45px;
+}
+
+%arr-sm-right {
+	background-position: -95px -45px;
+}
+
+%quote {
+	width: 39px; height: 27px;
+	background-position: -107px -28px;
+}

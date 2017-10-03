@@ -1,0 +1,59 @@
+.dish-info {
+	margin-bottom: 25px;
+}
+
+	.dish-info__left,
+	.dish-info__right {
+		position: absolute;
+		top: 50%;
+		border: none;
+		padding: 0;
+		background-color: transparent;
+		transform: translateY(-50%);
+	}
+
+	.dish-info__left {
+		left: 0;
+		@extend %arr-sm-left;
+	}
+
+	.dish-info__right {
+		right: 0;
+		@extend %arr-sm-right;
+	}
+
+
+.dish-weight {
+	position: relative;
+}
+
+	.dish-weight__val {
+		display: block;
+		margin-bottom: 5px;
+		color: #9d9c9c;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.dish-weight__icon {
+		display: block;
+		margin: 0 auto;
+		@extend %weight;
+	}
+
+
+.dish-composition {}
+
+
+.dish-calculate {
+	margin-bottom: 20px;
+	color: #000;
+}
+
+	.dish-calculate__picker {
+		margin-right: 15px;
+	}
+
+	.dish-calculate__calc {}
+
+	.sids-calculate__reslt {}

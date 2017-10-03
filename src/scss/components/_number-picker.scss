@@ -1,0 +1,35 @@
+.number-picker {
+	position: relative;
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+}
+
+	.number-picker__int {
+		display: inline-block;
+		width: 65px; height: 35px;
+		border: none;
+		background: #F6F3F4;
+		text-align: center;
+	}
+
+	.number-picker__left,
+	.number-picker__right {
+		position: absolute;
+		top: 50%;
+		border: none;
+		padding: 0;
+		background-color: transparent;
+		text-indent: -999999px;
+		transform: translateY(-50%);
+	}
+
+	.number-picker__left {
+		left: 0;
+		@extend %arr-sm-left;
+	}
+
+	.number-picker__right {
+		right: 0;
+		@extend %arr-sm-right;
+	}

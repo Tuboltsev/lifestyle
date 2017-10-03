@@ -1,0 +1,65 @@
+.banner-firstorder {
+	display: flex;
+	padding: 0 70px 0 100px;
+	border-color: $color-accent;
+	background-image: url(../img/531.jpg);
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-size: contain;
+}
+
+.banner-firstorder__discount {
+	$size: 215px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: $size; height: $size;
+	border-radius: $size;
+	background-color: $color-accent;
+	margin-top: -3px;
+	color: #fff;
+	font-size: 28.85px;
+	text-align: center;
+	text-transform: uppercase;
+	.num {
+		display: block;
+		font-size: 57.7px;
+	}
+}
+
+.banner-firstorder__content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.banner-firstorder__title {
+	position: relative;
+	margin-bottom: 25px;
+	color: #00b034;
+	font-size: 25px;
+	.big {
+		color: $color-accent;
+		text-transform: uppercase;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: -25px; left: 50%;
+		display: inline-block;
+		width: 95%; height: 3px;
+		background-color: #00D3E4;
+		transform: translateX(-50%);
+	}
+	@media all and (min-width: 1200px) {
+		margin-bottom: 50px;
+		font-size: 41.3px;
+	}
+}
+.banner-firstorder__text {
+	color: #030303;
+	font-size: 14px;
+	text-align: center;
+}

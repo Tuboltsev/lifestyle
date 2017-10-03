@@ -1,0 +1,22 @@
+mixin header
+	header#header
+		.container
+			.header__top.clearfix
+				.address.header__address
+					p.address__txt
+						i.fa.fa-map-marker 
+						| Харьков (с 08.00 до 22.00)
+					a(href="tel:0671234567").address__number (067) 123 45 67
+					a(href="tel:0971234567").address__number (097) 123 45 67 
+				a(href="javascript:void(0)").header__logo
+					img(src="img/logo.png" alt="logo").img-responsive
+				.header__right-col
+					+social('header__social')
+					.header__ctrl
+						a(href="javascript:void(0)").search.header__search
+							i.fa.fa-search
+						+basket('header__basket')
+
+			.header__bottom.row
+				.col-md-8.col-md-offset-2
+					+nav(nav)

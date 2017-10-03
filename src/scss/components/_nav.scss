@@ -1,0 +1,22 @@
+.nav {
+
+}
+
+.nav-list {
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+}
+
+.nav-list__item {
+	display: inline-block;
+	border: none;
+	background: none;
+	color: #000;
+	font: 24px $font-secondary;
+	text-transform: uppercase;
+	&:hover, &:focus, &.active {
+		color: #79b52d;
+		text-decoration: none;
+	}
+}

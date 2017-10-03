@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "dependencies": {
+    "components-font-awesome": "^4.7.0",
+    "swiper": "^3.4.2",
+    "jquery": "^3.2.1",
+    "bootstrap": "3.3.7"
+  }
+}

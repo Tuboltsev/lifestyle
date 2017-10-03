@@ -1,0 +1,217 @@
+//- HELPER MIXINS
+mixin css(file, media)
+	- media = media || 'all'
+	link(rel="stylesheet", href=file, media=media)
+
+
+mixin js(file)
+	script(src=file)
+
+//- COMPONENTS
+mixin social(classes)
+	- classes = classes ? (' ' + classes) : '';
+	div(class="social" + classes)
+		a(href="javascript:void(0)").social-item.social-item_inst
+			i.fa.fa-instagram
+		a(href="javascript:void(0)").social-item.social-item_gl
+			i.fa.fa-google-plus
+		a(href="javascript:void(0)").social-item.social-item_vk
+			i.fa.fa-vk
+
+
+mixin basket(classes)
+	- classes = classes ? ' ' + classes : '';
+	div(class="basket" + classes)
+		i.fa.fa-shopping-basket.basket__icon
+		a(href="javascript:void(0)").basket__add
+			i.fa.fa-plus-circle
+
+
+mixin nav(nav, classes)
+	- classes = classes ? ' ' + classes : '';
+	nav(class="nav" + classes)
+		ul.nav-list
+			each item in nav
+				if ( typeof item == "object" )
+					li.dropdown
+						button(type="button" data-toggle="dropdown").dropdown-toggle.nav-list__item= item.title
+							span.caret
+						if ( item.submenu.length )
+							ul.dropdown-menu
+								each subItem in item.submenu
+									li
+										a(href="javascript:void(0)")= subItem
+				else
+					li
+						a(href="javascript:void(0)").nav-list__item= item
+
+
+mixin rating(val, type, classes, clickable)
+	- classes = classes ? ' ' + classes : '';
+	- classes = clickable ? classes + ' clickable' : classes
+	- classses = (type == 'fill') ? classes + ' fill' : classes
+
+	div(class="rating" + classes)
+		if (clickable)
+			input(type="hidden" value="0")
+		- for (var i = 0; i < 5; i++)
+			if (i < val)
+				i.fa.fa-star.rating__star
+			else
+				if (type == 'fill')
+					i.fa.fa-star.rating__star.empty
+				else
+					i.fa.fa-star-o.rating__star
+
+
+
+mixin breadcrumbs(breadcrumbs, title)
+	ul.breadcrumbs
+		each crumb in breadcrumbs
+			li.breadcrumbs__item
+				a(href="javascript:void(0)")= crumb
+		li.breadcrumbs__item= title
+
+
+mixin menuCart(menu)
+	.menu-cart.container-fluid
+		.menu-cart__row.row
+			figure.menu-cart__img.col-md-6.col-xs-5
+				img(src=menu.img, alt="")
+			.menu-cart__content.col-md-4.col-xs-5.col-xs-offset-1
+				.menu-cart__price= menu.price
+				.menu-cart__desc= menu.desc
+				.dish-info.row
+					.dish-weight.col-xs-4
+						.dish-weight__container.swiper-container
+							.swiper-wrapper
+								.swiper-slide
+									span.dish-weight__val 150 гр
+									i.dish-weight__icon
+								.swiper-slide
+									span.dish-weight__val 200 гр
+									i.dish-weight__icon
+						button(type="button").dish-weight__left.dish-info__left
+						button(type="button").dish-weight__right.dish-info__right
+					+composition(menu.composition, 'dish-info__composition col-xs-8')
+				+dish-calculate(menu.price)
+				.order-ctrl.row
+					button(type="button").btn-add.col-xs-8 ДОБАВИТЬ В МЕНЮ
+					.col-xs-4.text-center
+						button(type="button" data-toggle="tooltip" data-placement="bottom" title="Сравнить").btn-compare
+							i.ic-graph
+					a(href="javascript:void(0)").btn-wish.col-xs-8 Добавить в вишлист
+
+
+mixin composition(data, classes)
+	- classes = classes ? ' ' + classes : '';
+
+	- var fill = [];
+	- var peityItems = [];
+	
+	div(class="composition" + classes)
+		
+		ul.composition-legend
+			each item in data
+				li.composition-legend__item= item.percent + '% ' + item.name
+					i(style="background:"+item.color).i
+				- fill.push(item.color);
+				- peityItems.push(item.percent);
+		- var dataPeity = {"fill": fill, "innerRadius": 15, "radius": 25 };
+		span(class="donut composition__donut" data-peity=dataPeity)= peityItems.join(',')
+
+
+
+mixin dish-calculate(price)
+	.dish-calculate
+		.number-picker.dish-calculate__picker
+			input(type="text" data-type="counter" data-min="1" data-max="100").number-picker__int
+		span.dish-calculate__calc= ' х ' + price + ' = '
+		span.sids-calculate__reslt= price
+
+
+mixin consultant
+	.consultant
+		.consultant-btn
+			button(type="button").consultant-btn__title Задать вопрос
+			span.consultant-btn__txt Online
+		.consultant-modal
+			.consultant-modal__header
+				p.consultant-modal__title Онлайн-консультант
+				a(href="javascript:void(0)").consultant-modal__close &times;
+			.consultant-modal__body
+				figure.consultant-modal__pic
+					img(src="img/Слой-16.jpg", alt="")
+				p.consultant-modal__message Здравствуйте! Буду рада помочь Вам с выбором. Задайте свой вопрос!
+			.consultant-modal__footer
+				form.clearfix
+					textarea(placeholder="Введите сообщение").consultant-modal__textarea.pull-left
+					button(type="submit").consultant-modal__submit.pull-left
+						i.fa.fa-share
+
+
+mixin reviews(reviews)
+	.reviews
+		.reviews__container
+			.swiper-wrapper.reviews__wrapper
+				each review in reviews
+					div(data-hash="slide1").swiper-slide.reviews__slide
+						+review(review, 'reviews__review')
+			.reviews__pagination
+		.reviews__button-next
+		.reviews__button-prev
+
+
+mixin review(review, classes)
+	- classes = classes ? ' ' + classes : '';
+	div(class="review" + classes)
+		.review-content
+			.review-header
+				if (review.pic)
+					figure.review__img.review__img_pic
+						img(src=review.img, alt="").img-responsive
+				else
+					img(src=review.img, alt="").review__img
+				+rating(review.rating, 'fill', 'review__rating')
+			.review-body
+				p.review__text= review.text
+		.review-footer
+			span.review__name= review.name
+
+
+mixin reviewForm
+	form.review-form
+		.container-fluid
+			.row
+				.review-form__control.col-md-5.col-md-offset-1.col-sm-6
+					input(type="text" placeholder="Ваше Имя").review-form__input
+				.review-form__control.col-md-5.col-sm-6
+					input(type="text" placeholder="Ваш e-mail").review-form__input
+			.row
+				.review-form__control.col-md-8.col-md-offset-1
+					textarea(placeholder="Текст Вашего отзыва...").review-form__textarea
+				.col-md-2.review-form__ctrl
+					span.review-form__title Ваша оценка
+					+rating(1, '', 'rating-clickable review-form__rating', true)
+					button(type="submit").btn-light.review-form__submit Отправить отзыв
+
+
+mixin bannerFirstOrder
+	.banner.banner-firstorder
+		span.banner-firstorder__discount
+			span.num 50%
+			span Скидка!
+		.banner-firstorder__content
+			p.banner-firstorder__title
+				| За 
+				span.big первый 
+				| заказ!
+			p.banner-firstorder__text Мы всегда рады новым покупателям, поэтому каждый новый клиент нашей доставки получает скидку на совершенно любое наше блюдо!
+
+
+mixin bannerPantofle
+	.banner.banner-pantofle
+		p.banner-pantofle__title Легкий салат “Пантуфль” 
+		span.banner-pantofle__disc -20%
+		a(href="javascript:void(0)").btn-light.banner-pantofle__btn ЗАКАЗАТЬ!
+		p.banner-pantofle__text до конца этого месяца!

@@ -1,0 +1,36 @@
+mixin footer
+	section.section-footer
+		.container
+			.row
+				.col-md-8
+					+bannerFirstOrder
+				.col-md-4.col-sm-6.col-xs-8
+					+bannerPantofle
+		footer#footer.container
+			.f-content
+				.row
+					.col-md-2.col-md-offset-1.col-sm-4.col-xs-4
+						h3.f-title= footerMenus[0].title
+						ul.f-nav
+							each item in footerMenus[0].items
+								li
+									a(href="javascript:void(0)").f-nav__item= item
+					.col-md-2.col-sm-4.col-xs-4
+						h3.f-title= footerMenus[1].title
+						ul.f-nav
+							each item in footerMenus[1].items
+								li
+									a(href="javascript:void(0)").f-nav__item= item
+					.col-md-2.col-sm-4.col-xs-4
+						h3.f-title= footerMenus[2].title
+						ul.f-nav
+							each item in footerMenus[2].items
+								li
+									a(href="javascript:void(0)").f-nav__item= item
+					.col-md-3.col-md-offset-1.visible-md.visible-lg
+						a(href="javascript:void(0)")
+							img(src="img/logo.png", alt="").img-responsive
+			.copyright
+				.row
+					.col-md-12
+						p &copy; Все права защищены, 2016 

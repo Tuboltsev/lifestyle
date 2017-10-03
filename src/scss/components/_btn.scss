@@ -1,0 +1,73 @@
+.btn-add {
+	display: inline-block;
+	height: 50px; max-width: 210px;
+	padding: 14px 15px;
+	border: none;
+	background-color: #FF0362;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	text-transform: uppercase;
+	&:hover, &:focus {
+		background-color: darken(#FF0362, 10%);
+	}
+}
+
+.btn-compare {
+	position: relative;
+	display: inline-block;
+	height: 50px; width: 55px;
+	border: none;
+	background-color: #52B609;
+	text-align: center;
+}
+
+	.btn-compare + .tooltip {
+		width: calc(100% - 30px);
+		.tooltip-arrow {
+			border-bottom-color: #64D0F6;
+		}
+		.tooltip-inner {
+			max-width: 100%;
+			width: 100%; height: 27px;
+			background-color: #64D0F6;
+			border-radius: 0;
+		}
+	}
+
+.btn-wish {
+	display: inline-block;
+	padding: 0;
+	color: #df095e;
+	font-size: 12px;
+	text-align: center;
+	&:before {
+		content: '+';
+		display: inline-block;
+		margin-right: 8px;
+		font: 20px Impact, sans-serif;
+		vertical-align: middle;
+	}
+	&:hover, &:focus {
+		color: darken(#df095e, 10%);
+		text-decoration: none;
+	}
+}
+
+
+.btn-light {
+	display: inline-block;
+	height: 50px;
+	border: none;
+	background-color: #00B21D;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 18px 10px;
+	&:hover, &:focus {
+		background-color: darken(#00B21D, 5%);
+		color: #fff;
+		text-decoration: none;
+	}
+}

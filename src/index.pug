@@ -1,0 +1,37 @@
+extends pug/template
+
+block content
+	.container
+		+breadcrumbs(breadcrumbs, menu.title)
+	section.menu-section
+		.container
+			.menu-title.text-center
+				h2.section-title.section-title_accent
+					span= menu.title
+				+rating(4)
+			.row
+				.menu-cart-wrap.leaves-wrap.col-md-10.col-md-offset-1
+					.leaves
+						img(src="img/leaf1.png", alt="").leaves__left-top
+						img(src="img/leaf2.png", alt="").leaves__bottom
+						img(src="img/leaf4.png", alt="").leaves__right-top
+						img(src="img/leaf3.png", alt="").leaves__right-bottom
+					+menuCart(menu)
+
+			.row.menu__statistics-items
+				.col-sm-4.col-xs-6.statistics-item
+					span.statistics-item__num= menu.statistics.order
+					p.statistics-item__txt пользователя заказали это блюдо
+				.col-sm-4.col-xs-6.statistics-item
+					span.statistics-item__num= menu.statistics.wish
+					p.statistics-item__txt пользователей добавили в вишлист
+				.col-sm-4.col-xs-6.statistics-item
+					span.statistics-item__num= menu.statistics.reviews
+					p.statistics-item__txt пользователей написали отзыв
+	section.section-reviews
+		.container
+			h2.section-title.section-title_light
+				span Отзывы наших клиентов
+			+reviews(reviews)
+			h2.sub-title Напишите нам свой отзыв!
+			+reviewForm

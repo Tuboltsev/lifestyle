@@ -1,0 +1,27 @@
+.composition {
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.composition-legend {
+	padding: 0;
+	margin-left: 18px;
+	margin-bottom: 0;
+	list-style: none;
+}
+
+.composition-legend__item {
+	position: relative;
+	padding-left: 15px;
+	color: #9d9c9c;
+	font-size: 12px;
+	.i {
+		$size: 10px;
+		position: absolute;
+		left: 0; top: 50%;
+		display: inline-block;
+		width: $size; height: $size;
+		transform: translateY(-50%);
+	}
+}
